@@ -62,6 +62,7 @@ export class HeaderComponent implements OnInit {
       this.managerName = '';
       
     });
+    //this.events.publish('manger:loggedOut');
     this.router.navigate(['login']);
   }
 

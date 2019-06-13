@@ -16,6 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import { LoginPage } from './login/login.page';
 
+import {Camera} from '@ionic-native/camera/ngx';
+import {File} from '@ionic-native/file/ngx';
+import {WebView} from '@ionic-native/ionic-webview/ngx';
+
+
 const appRoutes: Routes = [
   {
     path: 'login.page',
@@ -32,7 +37,8 @@ const appRoutes: Routes = [
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera, File, WebView
   ],
   bootstrap: [AppComponent]
 })
