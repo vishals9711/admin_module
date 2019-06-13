@@ -138,7 +138,12 @@ export class RestInfoEditPage implements OnInit {
 
   removeRestaurant(){
     this.storage.set('isLoggedIn', false);
-    this.router.navigate(['login']);
+
+    //this.router.navigate(['login']);
+    this.infoEdit.removeRestaurant(this.newData).subscribe((data: {}) => {
+      this.router.navigate(['login']);
+
+    });
   }
 
 ///////////////////////////////////image bhaangad

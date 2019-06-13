@@ -22,4 +22,11 @@ export class InfoEditService {
     return this.http.post(this.url + '/restinfo', data).pipe(
       map(this.extractData));
   }
+
+  public removeRestaurant(data): Observable<any> {
+    console.log('inside Infodelete_Service - restrid: ',data);
+    return this.http.post(this.url + '/restinfo_del', data).pipe(
+      map(this.extractData));
+  }
+
 }
