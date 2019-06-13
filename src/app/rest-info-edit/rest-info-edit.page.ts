@@ -103,7 +103,7 @@ export class RestInfoEditPage implements OnInit {
 
   reflectChanges(){
      this.infoEdit.editRestaurantInfo(this.newData).subscribe((data: {}) => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home',this.id]);
 
     });
   }
