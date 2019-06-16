@@ -4,7 +4,7 @@
     <h1 >DineSmart</h1>
   </ion-title>
 
-<ion-buttons slot="primary"  *ngIf="!isLoggedIn" slot="end">
+<ion-buttons slot="primary"  *ngIf="!isLoggedIn" slot="end" (click)="goToLogin()">
   <ion-button color="secondary" fill="solid" shape="round">
     <ion-icon slot="icon-only" name="paw"></ion-icon>Login</ion-button>
 </ion-buttons>

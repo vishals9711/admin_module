@@ -19,6 +19,7 @@ export class HomePage implements OnInit{
   img: any;
   rating: any;
   id: any;
+  isLoggedIn: boolean = false;
 
   //for bestsellers tab in html
   sliderOpts = {
@@ -32,6 +33,9 @@ export class HomePage implements OnInit{
   constructor(public storage: Storage,private activatedRoute: ActivatedRoute, public restaurantAPI: RestaurantDetailsService,
     public router: Router) {
     console.log('home page: isLoggedIn', this.storage.get('isLoggedIn'));
+    this.storage.get('isLoggedIn').then((val) => {
+      this.isLoggedIn = val;
+    });
   }
 
   ngOnInit(){
@@ -49,6 +53,7 @@ export class HomePage implements OnInit{
     this.rating = this.RestaurantData[0].RRating;
     this.id = this.RestaurantData[0].RId;
     });
+    
   }
 
   async gotoRestEdit(){

@@ -18,11 +18,11 @@ export class FoodMenuEditPage implements OnInit {
   addItemOn: boolean = false;
 
   menuSize: number;
-  newMenuData = {restId:'', itemId: 110, itemName:'', itemPrice:'', itemIngredients:'', isChefsSpecial: false, itemType:''};
+  newMenuData = {restId:'', itemId: 0, itemName:'', itemPrice:'', itemIngredients:'', isChefsSpecial: false, itemType:''};
   newMenuItemName: any;
   newMenuItemPrice: any;
   menuItemIndexInfoAsObj = {restId:'', itemId: ''};
-  tempId: number;
+  tempId: number = 120;
   rName: any;
   rId: any;
   itemId: any;
@@ -64,9 +64,9 @@ export class FoodMenuEditPage implements OnInit {
     this.newMenuData.restId = this.rId;
     let length = Object.keys(this.menuData).length;
     console.log('length of menuData', length);
-    this.tempId = this.menuData[(length)-1].ItemID;
+    //this.tempId = this.menuData[(length)-1].ItemID;
  
-    this.newMenuData.itemId = (this.newMenuData.itemId)+this.tempId+1;
+    this.newMenuData.itemId = this.tempId++;
     this.newMenuData.restId = this.rId;
     this.newMenuData.itemName = this.itemName;
     this.newMenuData.itemIngredients = this.itemIngredients;

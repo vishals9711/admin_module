@@ -17,7 +17,7 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="isLoggedIn">
   <ion-img *ngIf="RestaurantData" src="data:image/jpeg;base64,{{RestaurantData[0].RImg}}"></ion-img>
 
     <div class="ratingBar">
