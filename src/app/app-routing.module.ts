@@ -7,6 +7,10 @@ const routes: Routes = [
   // { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'rest-info-edit/:r_id', loadChildren: './rest-info-edit/rest-info-edit.module#RestInfoEditPageModule' },
+  { path: 'food-menu-edit/:r_id', loadChildren: './food-menu-edit/food-menu-edit.module#FoodMenuEditPageModule' },
+  { path: 'edit-menu-item/:menuItemIndexInfoAsString', loadChildren: './edit-menu-item/edit-menu-item.module#EditMenuItemPageModule' },
+
+
 
 
 ];

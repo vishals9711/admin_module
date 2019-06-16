@@ -51,8 +51,12 @@ export class HomePage implements OnInit{
     });
   }
 
-  gotoRestEdit(){
+  async gotoRestEdit(){
     this.router.navigate(['rest-info-edit', this.id]);
+  }
+
+  async goToMenu(){
+    this.router.navigate(['food-menu-edit', this.id]);
   }
 
 }
