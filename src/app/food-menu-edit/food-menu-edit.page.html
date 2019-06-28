@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
+    <ion-item>
     <ion-title padding>
       {{rName}} Food Menu
     </ion-title>
+    <ion-button color="primary" fill="solid" shape="round" slot="start" (click)="goToHome()">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-button>
+  </ion-item>
   </ion-toolbar>
   
 </ion-header>
@@ -27,8 +32,8 @@
       </ion-item>
 
       <ion-item>
-          <ion-label>Type: </ion-label>
-          <ion-select placeholder="Select " [(ngModel)]="menuItemType">
+        <ion-label>Type: </ion-label>
+          <ion-select placeholder="Select " [(ngModel)]="menuItemType" >
             <ion-select-option value="Soups" >Soups</ion-select-option>
             <ion-select-option value="Salads">Salads</ion-select-option>
             <ion-select-option value="Quick Bites">Quick Bites</ion-select-option>
@@ -38,7 +43,7 @@
             <ion-select-option value="Dessert">Dessert</ion-select-option>
             <ion-select-option value="Others">Dessert</ion-select-option>
           </ion-select>
-        </ion-item>
+      </ion-item>
     
       <ion-item >
           <ion-label text-wrap>
@@ -78,7 +83,7 @@
     <ion-list *ngFor="let eachItem of menuData; let i = index;">
       <ion-item >
 
-        <img src="data:image/jpeg;base64,{{eachItem.Fimage}}" style="height: 50px; width: 80px">
+        <img src="../../{{eachItem.FImageAddress}}" style="height: 50px; width: 80px">
         <ion-label padding (click)="editMenuItem(eachItem)">
           <h2 text-wrap>{{eachItem.Name}}</h2>
           <p wrap="soft">

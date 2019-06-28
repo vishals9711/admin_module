@@ -249,7 +249,9 @@ createFileName(){
 }
 
 
-
+goToHome(){
+  this.router.navigate(['/home', this.id]);
+}
 
 
 }

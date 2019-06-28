@@ -14,7 +14,7 @@ export class EditMenuItemPage implements OnInit {
   menuItemIndexInfoAsObj: any;
   menuItemIndexInfoAsString: any;
   itemData: any;
-  newItemData = {RId:'', ItemID:'', Rate:'', Ingredients: '', Name: '', chefsSpecial: false};
+  newItemData = {RId:'', ItemID:'', Rate:'', Ingredients: '', Name: '', chefsSpecial: false, itemType:''};
   //newItemData: any;
   rName: any;
   rId: any;
@@ -22,8 +22,9 @@ export class EditMenuItemPage implements OnInit {
   itemName: any;
   itemPrice: any;
   itemIngredients: any;
-  itemImage: any;
+  itemImageAddress: any;
   isChefsSpecial: boolean = false;
+  menuItemType: any;
 
   constructor(private activatedRoute: ActivatedRoute, private getMenuItemByIdApi: GetFoodMenuService, 
     private router: Router, public infoEditService: InfoEditService, public alertController: AlertController,
@@ -46,7 +47,7 @@ export class EditMenuItemPage implements OnInit {
       this.itemName = this.itemData.Name;
       this.itemPrice = this.itemData.Rate;
       this.itemIngredients = this.itemData.Ingredients;
-      this.itemImage = data[0].Fimage;
+      this.itemImageAddress = data[0].FImageAddress;
       this.isChefsSpecial = data[0].chefsSpecial;
     })
   }
@@ -58,6 +59,7 @@ export class EditMenuItemPage implements OnInit {
     this.newItemData.Rate = this.itemPrice;
     this.newItemData.Ingredients = this.itemIngredients;
     this.newItemData.chefsSpecial = this.isChefsSpecial;
+    this.newItemData.itemType = this.menuItemType;
     console.log('newItemData', this.newItemData);
 
     this.infoEditService.editItemData(this.newItemData).subscribe((data: {}) => {
@@ -65,6 +67,10 @@ export class EditMenuItemPage implements OnInit {
       this.router.navigate(['/food-menu-edit', this.rId]);
 
     });
+  }
+
+  goToHome(){
+    this.router.navigate(['/home', this.rId]);
   }
 
   

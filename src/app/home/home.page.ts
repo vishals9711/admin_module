@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantDetailsService } from '../Services/restaurant-details.service';
+import {GetFoodMenuService} from '../Services/get-food-menu.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,13 @@ import { RestaurantDetailsService } from '../Services/restaurant-details.service
 })
 export class HomePage implements OnInit{
 
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.5,
+    centeredSlides: true,
+    spaceBetween: 10
+
+  }
 
   passed_id: string;
   RestaurantData: any;
@@ -20,18 +28,13 @@ export class HomePage implements OnInit{
   rating: any;
   id: any;
   isLoggedIn: boolean = false;
+  food_data: any;
+  recommendedItems: any = [];
+  specialItems: any = [];
 
-  //for bestsellers tab in html
-  sliderOpts = {
-    zoom: false,
-    slidesPerView: 1.5,
-    centeredSlides: true,
-    spaceBetween: 10
-
-  }
 
   constructor(public storage: Storage,private activatedRoute: ActivatedRoute, public restaurantAPI: RestaurantDetailsService,
-    public router: Router) {
+    public router: Router, public menuApi: GetFoodMenuService) {
     console.log('home page: isLoggedIn', this.storage.get('isLoggedIn'));
     this.storage.get('isLoggedIn').then((val) => {
       this.isLoggedIn = val;
@@ -53,6 +56,28 @@ export class HomePage implements OnInit{
     this.rating = this.RestaurantData[0].RRating;
     this.id = this.RestaurantData[0].RId;
     });
+
+    this.menuApi.getMenuItems(parseInt(this.passed_id)).subscribe((data: {}) => {
+      this.food_data = data;
+      
+      console.log('food data', this.food_data, (this.food_data).length);
+      let i:number = 0;
+      let j:number = 0;
+      for(let eachItem of this.food_data){
+        if(eachItem.FRating >= 4.3){
+          this.recommendedItems[i] = eachItem;
+          i++;
+        }
+        if(eachItem.chefsSpecial == true){
+          this.specialItems[j] = eachItem;
+          j++;
+        }
+      }
+      console.log('recommended:', this.recommendedItems);
+      console.log('chefs special', this.specialItems);
+
+    });
+
     
   }
 

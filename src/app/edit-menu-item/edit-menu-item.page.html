@@ -4,6 +4,11 @@
       <ion-title padding>
         {{rName}}:&nbsp;Edit Item
       </ion-title>
+
+      <ion-button color="primary" fill="solid" shape="round" slot="start" (click)="goToHome()">
+          <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+  
     </ion-item>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +16,7 @@
 <ion-content>
   <ion-item style="align-content:center">
       <ion-icon name="create"></ion-icon>
-      <img src="data:image/jpeg;base64,{{itemImage}}" padding>
+      <img src="../../{{itemImageAddress}}" padding>
   </ion-item>
 
   <ion-item padding>
@@ -21,6 +26,21 @@
     <ion-textarea  type="text" placeholder="{{itemName}}" wrap="soft" [(ngModel)]="itemName">
     </ion-textarea>
   </ion-item>
+
+  <ion-item>
+    <ion-label>Type: </ion-label>
+      <ion-select placeholder="Select " [(ngModel)]="menuItemType">
+        <ion-select-option value="Soups" >Soups</ion-select-option>
+        <ion-select-option value="Salads">Salads</ion-select-option>
+        <ion-select-option value="Quick Bites">Quick Bites</ion-select-option>
+        <ion-select-option value="Starters">Starters</ion-select-option>
+        <ion-select-option value="Main Course">Main Course</ion-select-option>
+        <ion-select-option value="Beverages">Beverages</ion-select-option>
+        <ion-select-option value="Dessert">Dessert</ion-select-option>
+        <ion-select-option value="Others">Dessert</ion-select-option>
+      </ion-select>
+  </ion-item>
+
 
   <ion-item padding>
       <ion-label text-wrap>

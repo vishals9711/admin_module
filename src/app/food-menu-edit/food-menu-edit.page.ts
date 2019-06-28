@@ -150,4 +150,8 @@ export class FoodMenuEditPage implements OnInit {
   
   }
 
+  goToHome(){
+    this.router.navigate(['/home', this.rId]);
+  }
+
 }
